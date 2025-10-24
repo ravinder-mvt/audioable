@@ -1,99 +1,110 @@
-import React from 'react'
-import headphoneImg from "../assets/headphone.png";
+import React from "react";
+import arrow from "../assets/asset 7.svg";
+import ListnerImg from "../assets/asset 13.jpeg";
+import { products } from "../utills/featuredData";
+import { headphonesData } from "../utills/headphonesData.js";
+import { useNavigate } from "react-router-dom";
+
 const HeadPhonePage = () => {
+  const navigate = useNavigate();
+  const handNavigate = (id) => {
+    navigate(`/products/${id}`)
+
+  }
   return (
     <div>
 
-      <div className='h-[200px] flex items-center justify-center bg-[#191919]'>
-        <h1 className='flex items-center justify-center font-bold text-6xl uppercase text-white tracking-wide leading-0'>
+      <div className="h-[200px] flex items-center justify-center bg-[#191919]">
+        <h1 className="font-bold text-6xl uppercase text-white tracking-wide">
           Headphones
         </h1>
       </div>
-      <div className='custom-container my-10 flex flex-col gap-8'>
-        {/* headphones */}
-        <div className='flex items-stretch justify-center my-10'>
-          <div>
-            <img src={headphoneImg} alt="headphoe1" className='w-[800px] h-[600px]' />
+
+      <div className="custom-container my-10 flex flex-col gap-8">
+
+        {headphonesData.map((item) => (
+          <div
+            key={item.id}
+            className={`flex items-stretch justify-center my-10 ${item.reverse ? "flex-row-reverse" : ""
+              }`}
+          >
+            <div>
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-[800px] h-[650px]"
+              />
+            </div>
+
+            <div
+              className={`flex items-start justify-center flex-col gap-10 ${item.reverse ? "pr-30" : "pl-30"
+                }`}
+            >
+              <h1 className="text-[#D87D4A] text-xl font-semibold">
+                {item.subTitle}
+              </h1>
+              <h1 className="font-semibold text-3xl">{item.title}</h1>
+              <p className="leading-relaxed max-w-2xl text-[#807878]">
+                {item.description}
+              </p>
+              <button className="uppercase bg-[#D87D4A] py-3 px-2 w-[200px] text-white" onClick={() => handNavigate(item.slug)}>
+                See product
+              </button>
+            </div>
           </div>
+        ))}
 
-          <div className='flex items-start justify-center flex-col pl-30 gap-10'>
-            <h1 className='text-[#D87D4A] text-xl font-semibold'>
-              New Product
-
-            </h1>
-            <h1 className='font-semibold text-3xl'>
-              XX99 Mark II
-              <br /> Headphones
-
-            </h1>
-            <p className='leading-relaxed max-w-2xl text-[#807878] '>
-              The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.
-
-
-            </p>
-            <button className='uppercase bg-[#D87D4A] py-3 px-2 w-[200px] text-white'>
-              See product
-            </button>
-          </div>
-
-        </div>
-            <div className='flex items-stretch justify-center my-10'>
-                   <div className='flex items-start justify-center flex-col pr-30 gap-10'>
-            <h1 className='text-[#D87D4A] text-xl font-semibold'>
-              New Product
-
-            </h1>
-            <h1 className='font-semibold text-3xl'>
-              XX99 Mark II
-              <br /> Headphones
-
-            </h1>
-            <p className='leading-relaxed max-w-2xl text-[#807878] '>
-              The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.
-
-
-            </p>
-            <button className='uppercase bg-[#D87D4A] py-3 px-2 w-[200px] text-white'>
-              See product
-            </button>
-          </div>
-          <div>
-            <img src={headphoneImg} alt="headphoe1" className='w-[800px] h-[600px]' />
-          </div>
-
-     
-
-        </div>
-            <div className='flex items-stretch justify-center my-10'>
-          <div>
-            <img src={headphoneImg} alt="headphoe1" className='w-[800px] h-[600px]' />
-          </div>
-
-          <div className='flex items-start justify-center flex-col pl-30 gap-10'>
-            <h1 className='text-[#D87D4A] text-xl font-semibold'>
-              New Product
-
-            </h1>
-            <h1 className='font-semibold text-3xl'>
-         XX59
-              <br /> Headphones
-
-            </h1>
-            <p className='leading-relaxed max-w-2xl text-[#807878] '>
-              Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.
-
-
-            </p>
-            <button className='uppercase bg-[#D87D4A] py-3 px-2 w-[200px] text-white'>
-              See product
-            </button>
-          </div>
-
+        {/* Shop Section */}
+        <div className="flex items-center justify-between my-40">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="bg-[#F1F1F1] text-[#191919] w-[360px] h-[200px] rounded-2xl p-4 flex flex-col items-center justify-center"
+            >
+              <img
+                src={product.img}
+                alt="img"
+                className="h-[100px] w-[100px] -mt-20 object-cover"
+              />
+              <h1 className="text-2xl font-medium">{product.heading}</h1>
+              <h2 className="flex items-center justify-center gap-4">
+                Shop
+                <span>
+                  <img src={arrow} alt="arrow" />
+                </span>
+              </h2>
+            </div>
+          ))}
         </div>
 
+        {/* Audio Gear Section */}
+        <div className="flex items-center justify-between my-20 gap-10">
+          <div className="flex-1 flex flex-col gap-8">
+            <h1 className="text-5xl font-semibold text-[#191919] uppercase leading-tight">
+              Bringing you the
+              <span className="text-red-500 px-2">best</span>
+              audio gear
+            </h1>
+            <p className="text-[#7e7a7a] font-normal tracking-wide leading-relaxed">
+              Located at the heart of New York City, Audiophile is the premier
+              store for high end headphones, earphones, speakers, and audio
+              accessories. We have a large showroom and luxury demonstration
+              rooms available for you to browse and experience a wide range of
+              our products.
+            </p>
+          </div>
+
+          <div className="flex-1">
+            <img
+              src={ListnerImg}
+              alt="music listner"
+              className="w-full h-[600px] object-cover rounded-xl"
+            />
+          </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeadPhonePage
+export default HeadPhonePage;

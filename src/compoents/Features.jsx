@@ -3,7 +3,7 @@ import React from 'react'
 import arrow from "../assets/asset 7.svg"
 import speakerbg from "../assets/asset 18.svg";
 import speakermain from "../assets/asset 10.png";
-import z7speaker from "../assets/z7speaker.jpg";
+import z7speaker from "../assets/table.jpg";
 import YX1 from "../assets/asset 12.jpeg";
 import ListnerImg from "../assets/asset 13.jpeg";
 import { products } from '../utills/featuredData'
@@ -19,7 +19,7 @@ const Features = () => {
                     {
                         products.map((product, index) => {
                             return (
-                                <div className='bg-[#F1F1F1] text-[#191919] w-[360px] h-[200px] border-radius-[20px] gap-2 p-4 flex flex-col items-center bg-cover justify-center' >
+                                <div key={index} className='bg-[#F1F1F1] text-[#191919] w-[360px] h-[200px] border-radius-[20px] gap-2 p-4 flex flex-col items-center bg-cover justify-center' >
                                     <img src={product.img} alt="img" className='h-[100px] w-[100px]  -mt-20 object-cover' />
                                     <h1 className='text-2xl font-medium'>{product.heading}</h1>
                                     <h2 className='flex items-center justify-center gap-4'>
@@ -65,8 +65,10 @@ const Features = () => {
                 <div className='flex items-center my-10'>
 
 
-                    <div className='flex relative w-full h-[400px]'>
-                        <img src={z7speaker} alt="z9x speaker" className='h-auto w-full object-cover' />
+                    <div className='relative w-full h-[400px]'style={{
+                        backgroundImage: `url(${z7speaker}) `, backgroundRepeat: "no-repeat",backgroundSize:"cover",backgroundPosition:"center",width:"100%"
+                    }}>
+                        {/* <img src={z7speaker} alt="z9x speaker" className='h-auto w-full object-contain' /> */}
 
                         <div className='flex flex-col gap-4 items-center justify-center absolute top-1/4 left-1/8'>
                             <h1 className='text-4xl font-semibold tracking-widest text-[#191919]'>

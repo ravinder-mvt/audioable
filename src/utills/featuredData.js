@@ -2,7 +2,7 @@ import fbIcon from "../assets/asset 14.svg";
 import twIcon from "../assets/asset 15.svg";
 import instIcon from "../assets/asset 16.svg";
 import headphone from "../assets/image-headphones.png"
-import speaker from "../assets/image-speaker-zx9.png"
+import speaker from "../assets/smallSpeak.png"
 import earphones from "../assets/asset 9.png"
 export const products = [
         {

@@ -1,5 +1,6 @@
 import React from 'react'
 import headphone from "../assets/asset 12.jpeg"
+
 const HeroSection = () => {
     return (
         <div className='bg-[#191919] flex items-center text-white justify-center'>
