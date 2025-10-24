@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Manrope:wght@200..800&display=swap');
+@import "tailwindcss";
+
+
+@layer components {
+  .custom-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components { 
+  .centered {
+    @apply flex items-center justify-center;
+  }
+}
