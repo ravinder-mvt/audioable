@@ -1,6 +1,6 @@
 
 import headphoneImg from "../assets/headphone.png";
-import head2 from "../assets/headphone2.jpg";
+import head2 from "../assets/head4.jpg";
 import head3 from "../assets/headphone3.jpg";
 
 export const headphonesData = [

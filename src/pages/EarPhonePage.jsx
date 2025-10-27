@@ -27,13 +27,13 @@ const EarPhonePage = () => {
 
                         </h1>
                         <h1 className='font-semibold text-3xl'>
-          YX1 Wireless 
+                            YX1 Wireless
 
                             <br /> Earphones
 
                         </h1>
                         <p className='leading-relaxed max-w-2xl text-[#807878] '>
-                           Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature
+                            Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature
 
 
                         </p>

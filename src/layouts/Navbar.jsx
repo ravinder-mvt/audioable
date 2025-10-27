@@ -3,6 +3,7 @@ import cart from "../assets/cart.svg"
 import { Link } from 'react-router-dom'
 import { navTags } from '../utills/featuredData'
 import logo from "../assets/image.png"
+import { BsCart3 } from "react-icons/bs";
 const Navbar = () => {
 
     return (
@@ -27,7 +28,7 @@ const Navbar = () => {
                     }
                 </div>
                 <div className='flex items-center justify-center'>
-                    <img src={cart} alt="cart icon" className='text-white object-cover w-6 h-6'/>
+                    <BsCart3  className='text-white object-cover w-8 h-8'/>
 
                 </div>
             </div>

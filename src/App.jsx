@@ -8,6 +8,7 @@ import SpeakerPage from './pages/SpeakerPage'
 import EarPhonePage from './pages/EarPhonePage'
 import { CartProvider } from './context/cardContext'
 import Products from './compoents/Products'
+import StorePage from "./pages/StorePage"
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
               <Route path='/speakers' element={<SpeakerPage />} />
               <Route path='/earphones' element={<EarPhonePage />} />
               <Route path="/products/:slug" element={<Products />} />
+              <Route path='/store/:slug' element={<StorePage/>}/>
             </Routes>
           </main>
           <Footer />

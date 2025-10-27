@@ -1,7 +1,11 @@
 import React from 'react'
 import headphone from "../assets/asset 12.jpeg"
+import { heroSectionProducts } from "./../utills/featuredData.js"
+import { useNavigate } from 'react-router-dom'
 
 const HeroSection = () => {
+    const navigate = useNavigate();
+
     return (
         <div className='bg-[#191919] flex items-center text-white justify-center'>
 
@@ -11,24 +15,34 @@ const HeroSection = () => {
                         New Product
 
                     </h1>
-                    <h2 className='font-bold text-6xl'>
-                        XX99 Mark II Headphones
+                    {
+                        heroSectionProducts?.map((product, index) => (
+                            <>
+                                <h2 className='font-bold text-7xl' key={index}>
+                                    {
+                                        product.heading
+                                    }
 
-                    </h2>
-                    <p className='flex text-[#808080] max-w-sm leading-relaxed'>
-                        Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
+                                </h2>
+                                <p className='flex text-[#808080] max-w-sm leading-relaxed'>
+                                    {
+                                        product.description
+                                    }
 
 
-                    </p>
+                                </p>
 
-                    <button className='bg-[#D87D4A] py-3 px-2 w-[200px] text-white'>
-                        See Product
-                    </button>
+                                <button className='bg-[#D87D4A] py-3 px-2 w-[200px] text-lg font-medium rounded-md text-white' onClick={() => navigate(`products/${product.slug}`)}>
+                                    See Product
+                                </button>
+                            </>
+                        ))
+                    }
                 </div>
                 <div className='flex-1'>
                     {/* headphone */}
 
-                    <img src={headphone} alt='headphone' className='h-[700px] object-cover'/>
+                    <img src={headphone} alt='headphone' className='h-[700px] object-cover' />
                 </div>
             </div>
         </div>

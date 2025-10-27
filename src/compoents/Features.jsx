@@ -7,22 +7,25 @@ import z7speaker from "../assets/table.jpg";
 import YX1 from "../assets/asset 12.jpeg";
 import ListnerImg from "../assets/asset 13.jpeg";
 import { products } from '../utills/featuredData'
+import { useNavigate } from 'react-router-dom';
 const Features = () => {
+    const navigate=useNavigate();
+
 
     return (
         <div className=''>
 
             <div className='custom-container'>
 
-                <div className='flex items-center justify-between my-40'>
+                <div className='flex items-center gap-8 justify-between my-40'>
                     {/* shop */}
                     {
                         products.map((product, index) => {
                             return (
-                                <div key={index} className='bg-[#F1F1F1] text-[#191919] w-[360px] h-[200px] border-radius-[20px] gap-2 p-4 flex flex-col items-center bg-cover justify-center' >
-                                    <img src={product.img} alt="img" className='h-[100px] w-[100px]  -mt-20 object-cover' />
+                                <div key={index} className='bg-[#F1F1F1] text-[#191919] w-[400px] h-[210px] rounded-lg gap-4 p-4 flex flex-col items-center bg-cover justify-center' >
+                                    <img src={product.img} alt="img" className='h-[170px] w-[170px]  -mt-20 object-cover' />
                                     <h1 className='text-2xl font-medium'>{product.heading}</h1>
-                                    <h2 className='flex items-center justify-center gap-4'>
+                                    <h2 className='flex items-center justify-center gap-4 text-lg font-medium' onClick={()=>navigate(product.link)}>
                                         Shop
                                         <span>
                                             <img src={arrow} alt="arrow" />
