@@ -69,12 +69,12 @@ const SpeakerPage = () => {
 
 
                 </div>
-                <div className='flex items-center justify-between my-40'>
+                <div className='flex items-center gap-4 justify-between my-20'>
                     {/* shop */}
                     {
                         products.map((product, index) => {
                             return (
-                                <div className='bg-[#F1F1F1] text-[#191919] w-[360px] h-[200px] border-radius-[20px] gap-2 p-4 flex flex-col items-center bg-cover justify-center' >
+                                <div className='bg-[#F1F1F1] text-[#191919] w-[350px] h-[200px] border-radius-[20px] gap-4 p-4 flex flex-col items-center bg-cover justify-center' >
                                     <img src={product.img} alt="img" className='h-[150px] w-[150px]  -mt-20 object-cover' />
                                     <h1 className='text-2xl font-medium'>{product.heading}</h1>
                                     <h2 className='flex items-center justify-center gap-4'>
@@ -89,7 +89,7 @@ const SpeakerPage = () => {
                     }
 
                 </div>
-                <div className='flex items-center justify-between my-40 gap-10 '>
+                <div className='flex items-center justify-between my-20 gap-10 '>
                     {/* Audio gear */}
 
                     <div className='flex-1 flex flex-col gap-8'>

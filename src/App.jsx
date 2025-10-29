@@ -9,6 +9,7 @@ import EarPhonePage from './pages/EarPhonePage'
 import { CartProvider } from './context/cardContext'
 import Products from './compoents/Products'
 import StorePage from "./pages/StorePage"
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (

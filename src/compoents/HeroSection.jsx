@@ -1,5 +1,5 @@
 import React from 'react'
-import headphone from "../assets/asset 12.jpeg"
+import headphone from "../assets/image-hero.jpg"
 import { heroSectionProducts } from "./../utills/featuredData.js"
 import { useNavigate } from 'react-router-dom'
 
@@ -9,8 +9,8 @@ const HeroSection = () => {
     return (
         <div className='bg-[#191919] flex items-center text-white justify-center'>
 
-            <div className='custom-container flex items-center w-full gap-20 justify-between'>
-                <div className='flex flex-col gap-10 flex-1'>
+            <div className='custom-container  flex items-center w-full gap-0 justify-between relative'>
+                <div className='flex flex-col gap-4 flex-1 '>
                     <h1 className='uppercase text-[#808080] font-bold tracking-[10px] text-xl leading-6'>
                         New Product
 
@@ -39,10 +39,10 @@ const HeroSection = () => {
                         ))
                     }
                 </div>
-                <div className='flex-1'>
+                <div className='flex items-center justify-center'>
                     {/* headphone */}
 
-                    <img src={headphone} alt='headphone' className='h-[700px] object-cover' />
+                    <img src={headphone} alt='headphone' className=' h-[700px] ml-[700px] flex items-center justify-center object-cover object-right' />
                 </div>
             </div>
         </div>

@@ -55,11 +55,11 @@ const HeadPhonePage = () => {
         ))}
 
         {/* Shop Section */}
-        <div className="flex items-center justify-between my-40">
+        <div className="flex items-center justify-between my-20 gap-5">
           {products.map((product, index) => (
             <div
               key={index}
-              className="bg-[#F1F1F1] text-[#191919] w-[360px] h-[200px] rounded-2xl p-4 flex flex-col items-center justify-center"
+              className="bg-[#F1F1F1] text-[#191919] w-[360px] h-[200px] p-4 flex flex-col items-center justify-center"
             >
               <img
                 src={product.img}

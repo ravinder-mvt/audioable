@@ -1,5 +1,5 @@
 import React from 'react'
-import { storeData } from "../utills/featuredData"
+import { storeData } from "../utills/productsData"
 import { useParams } from 'react-router-dom'
 
 const StorePage = () => {

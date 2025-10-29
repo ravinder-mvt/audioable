@@ -70,7 +70,7 @@ const EarPhonePage = () => {
 
 
                 </div>
-                <div className='flex items-center justify-between my-40'>
+                <div className='flex items-center gap-4 rounded-lg justify-between my-40'>
                     {/* shop */}
                     {
                         products.map((product, index) => {
