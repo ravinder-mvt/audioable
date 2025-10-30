@@ -34,7 +34,7 @@ export const headphonesData = [
     description:
       "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
     image: head3,
-    reverse: false,
+    reverse: true,
     price: "$ 3,750"
   },
 ];

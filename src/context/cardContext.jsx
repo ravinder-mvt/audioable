@@ -5,6 +5,7 @@ const CartContext = createContext();
 const initialState = {
   items: [],
   totalamount: 0,
+  isCheckout: false
 };
 
 const cartReducer = (state, action) => {
@@ -79,6 +80,15 @@ const cartReducer = (state, action) => {
         totalamount:
           state.totalamount - removedItem.price * removedItem.quantity,
       };
+    }
+    case "EMPTY_CART": {
+     return initialState;
+    }
+    case "IS_CHECKOUT": {
+      return {
+        ...state,
+        isCheckout: action.payload
+      }
     }
 
     default:

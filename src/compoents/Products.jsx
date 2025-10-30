@@ -6,7 +6,7 @@ import arrow from "../assets/asset 7.svg";
 import ListnerImg from "../assets/asset 13.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../context/cardContext";
-
+import { toast } from "react-toastify";
 const Products = () => {
   const { dispatch, state } = useCartContext();
 
@@ -16,33 +16,57 @@ const Products = () => {
 
 
   const INCREASE_QUANTITY = (product) => {
-    const price = Number(product.price.toString().replace(/[^0-9.]/g, ""));
+    const isInCart = selectedProductIds?.includes(product.slug);
+
+    if (!isInCart) {
+      toast.info("Please add the product to cart first!");
+      return;
+    }
+
+
+    const price = Number(product.price.toString().replace(/[^0-9.][\$\"]/g, ""));
     dispatch({
       type: "INCREASE_QUANTITY",
       payload: { id: product.id, price },
     });
   };
 
+  const DECREASE_QUANTITY = (product) => {
+    const isInCart = selectedProductIds?.includes(product.slug);
+
+    if (!isInCart) {
+      toast.info("Please add the product to cart first!");
+      return;
+    }
+
+
+    const price = Number(product.price.toString().replace(/[^0-9.][\$\"]/g, ""));
+    dispatch({
+      type: "DECREASE_QUANTITY",
+      payload: { id: product.id, price }
+    })
+  }
+
 
   if (!selectedProduct) {
     return <h1>product not found!</h1>;
   }
 
-  const recomendedProducts = selectedProduct[0].recomended?.map(
+  const recomendedProducts = selectedProduct[0]?.recomended?.map(
     (product) => product
   );
 
   const currentProduct = state?.items?.find(
-  (item) => item.slug === selectedProduct[0]?.slug
-);
+    (item) => item.slug === selectedProduct[0]?.slug
+  );
 
-const productQuantity = currentProduct ? currentProduct.quantity : 0;
+  const productQuantity = currentProduct ? currentProduct.quantity : 0;
 
 
-//check nhere wheteher is in cart ot not
+  //check nhere wheteher is in cart ot not
 
-const selectedProductIds = state?.items?.map((item) => item.slug);
-const isInCart = selectedProductIds?.includes(selectedProduct[0].slug);
+  const selectedProductIds = state?.items?.map((item) => item.slug);
+  const isInCart = selectedProductIds?.includes(selectedProduct[0].slug);
   return (
     <div>
       <img src={selectedProduct[0]?.red} alt="" />
@@ -79,19 +103,24 @@ const isInCart = selectedProductIds?.includes(selectedProduct[0].slug);
             </h1>
             <div className="flex items-center justify-between gap-10">
               <button className="flex items-center justify-center gap-6 bg-[#F1F1F1] text-[#000000] px-8 py-3 text-xl font-semibold">
-                <span>-</span>
+                <span onClick={() => DECREASE_QUANTITY(selectedProduct[0])}>-</span>
                 {productQuantity}
-                <span onClick={() => INCREASE_QUANTITY(selectedProduct[0])}>
+                <span onClick={() => INCREASE_QUANTITY(selectedProduct[0])}
+
+                >
                   +
                 </span>
               </button>
-           <button
-  className="bg-[#da804d] py-3 px-8 text-white text-md font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
-  disabled={isInCart}
-  onClick={() => dispatch({ type: "ADD_TO_CART", payload: selectedProduct[0] })}
->
-  {isInCart ? "Added to Cart" : "Add to Cart"}
-</button>
+              <button
+                className="bg-[#da804d] py-3 px-8 text-white text-md font-normal disabled:bg-gray-400 disabled:cursor-not-allowed"
+                disabled={isInCart}
+                onClick={() => {
+                  dispatch({ type: "ADD_TO_CART", payload: selectedProduct[0] })
+                  toast.success("Product added to cart")
+                }}
+              >
+                {isInCart ? "Added to Cart" : "Add to Cart"}
+              </button>
 
             </div>
           </div>
@@ -124,7 +153,7 @@ const isInCart = selectedProductIds?.includes(selectedProduct[0].slug);
 
                 return (
                   <>
-                    <div className="flex items-start justify-start flex-col gap-2 w-full">
+                    <div className="flex items-start justify-start flex-col gap-2 w-full" key={index}>
                       <p className="flex items-center justify-center gap-20">
                         <span className="text-md font-semibold text-[#D87D4A]">
                           {quantity}

@@ -2,7 +2,8 @@ import React from "react";
 import arrow from "../assets/asset 7.svg";
 import ListnerImg from "../assets/asset 13.jpeg";
 import { products } from "../utills/featuredData";
-import { headphonesData } from "../utills/headphonesData.js";
+import { storeData } from "../utills/productsData";
+// import { headphonesData } from "../utills/headphonesData.js";
 import { useNavigate } from "react-router-dom";
 
 const HeadPhonePage = () => {
@@ -11,6 +12,10 @@ const HeadPhonePage = () => {
     navigate(`/products/${id}`)
 
   }
+  const headphonesData = storeData.filter((item) => item.type == "headphone")
+  const revsers = headphonesData.map((item) => item.reverse)
+
+
   return (
     <div>
 
@@ -32,7 +37,7 @@ const HeadPhonePage = () => {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-[800px] h-[650px]"
+                className="w-[800px] h-[550px]"
               />
             </div>
 
@@ -67,7 +72,7 @@ const HeadPhonePage = () => {
                 className="h-[100px] w-[100px] -mt-20 object-cover"
               />
               <h1 className="text-2xl font-medium">{product.heading}</h1>
-              <h2 className="flex items-center justify-center gap-4">
+              <h2 className="flex items-center justify-center gap-4" onClick={() => navigate(`/${product.heading}`)}>
                 Shop
                 <span>
                   <img src={arrow} alt="arrow" />

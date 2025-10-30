@@ -1,101 +1,92 @@
 import React from "react";
 import { useCartContext } from "../context/cardContext";
+import { useNavigate } from "react-router-dom";
 
-export const CartPopUp = ({ setShowCart }) => {
+export const CartPopUp = ({ showCart, setShowCart }) => {
+  const navigate = useNavigate();
   const { state, dispatch } = useCartContext();
 
 
-  const totalItems = state?.items?.reduce((acc, item) => acc + item.quantity, 0);
 
 
-  const totalAmount = state?.items?.reduce(
-    (acc, item) => acc + Number(item.price) * item.quantity,
-    0
-  );
+  const totalAmount = state.items?.reduce((acc, item) => {
+
+    const cleanedPrice = item.price.replace(/\$|,/g, "");
+    const numericPrice = Number(cleanedPrice) || 0;
+
+    return acc + numericPrice * (item.quantity || 1);
+  }, 0);
 
 
-  const handleOutsideClick = (e) => {
-    if (e.target.id === "cartOverlay") setShowCart(false);
-  };
 
   return (
-    <div
-      id="cartOverlay"
-      onClick={handleOutsideClick}
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-    >
-      <div className="bg-white rounded-2xl shadow-lg p-6 w-[400px] max-h-[80vh] overflow-y-auto relative">
-        {/* Close Button */}
-        <button
-          onClick={() => setShowCart(false)}
-          className="absolute top-3 right-3 text-gray-600 text-xl"
-        >
-          ✕
-        </button>
+    <>
 
-        <h2 className="text-xl font-bold mb-4">
-          Your Cart ({totalItems} {totalItems === 1 ? "item" : "items"})
-        </h2>
+      {showCart && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white w-[400px] rounded-2xl shadow-lg p-5 relative max-h-[80vh] overflow-y-auto">
+            <button
+              onClick={() => setShowCart(false)}
+              className="absolute top-3 right-3 text-gray-600 text-xl"
+            >
+              ✕
+            </button>
 
-        {state.items.length > 0 ? (
-          <>
-            {state.items.map((item) => (
-              <div
-                key={item.id}
-                className="flex justify-between items-center border-b border-gray-200 py-3"
-              >
-                {/* Product Info */}
-                <div className="flex items-center gap-3">
-                  <img
-                    src={item.image}
-                    alt={item.name || "product"}
-                    className="w-12 h-12 object-cover rounded"
-                  />
-                  <div>
-                    <p className="font-semibold">{item.name || item.slug}</p>
-                    <p className="text-sm text-gray-500">
-                      ₹{item.price} × {item.quantity}
-                    </p>
-                  </div>
-                </div>
+            <h2 className="text-xl font-bold mb-4">Your Cart</h2>
 
-                {/* Quantity Controls */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() =>
-                      dispatch({ type: "DECREASE_QUANTITY", payload: item })
-                    }
-                    className="px-2 py-1 border rounded text-sm"
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    onClick={() =>
-                      dispatch({ type: "INCREASE_QUANTITY", payload: item })
-                    }
-                    className="px-2 py-1 border rounded text-sm"
-                  >
-                    +
-                  </button>
+            {state.items.length === 0 ? (
+              <p className="text-gray-600 text-center">Your cart is empty 🛒</p>
+            ) : (
+              <div className="flex flex-col gap-4">
+                {state.items.map((item) => {
+                  const cleanedPrice = item.price.replace(/\$|,/g, "");
+                  console.log("heree======", item)
+                  return (
+                    <div
+                      key={item.id}
+                      className="flex justify-between  text-gray-800"
+                    >
+                      <img src={item.image} alt="" className="w-14 h-14" />
+                      <div>
+                        <p className="font-semibold">{item.title}</p>
+                        <p className="text-sm text-gray-500">
+                          ₹{Number(cleanedPrice)} × {item.quantity}
+                        </p>
+                      </div>
+                      <p className="font-bold">
+                        ₹{Number(cleanedPrice) * item.quantity}
+                      </p>
+                    </div>
+                  )
+                })}
+
+                <div className="flex justify-between mt-4 font-bold text-lg border-t pt-2">
+                  <p>Total:</p>
+                  <p>₹{totalAmount.toLocaleString()}</p>
                 </div>
               </div>
-            ))}
+            )}
+            <div className="flex items-center justify-center">
+              {
+                state.items.length > 0 && (
+                  <>
+                    <button
+                      className="bg-[#da804d] my-4 py-2 px-8 text-white text-md font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-[#d8ab7f]"
+                      onClick={() => {
+                        navigate("/checkout");
+                        setShowCart(false);
+                      }}
 
-            {/* Total and Checkout */}
-            <div className="mt-6 flex justify-between font-semibold text-lg text-[#191919]">
-              <span>Total:</span>
-              <span>₹{totalAmount.toLocaleString()}</span>
+                    >
+                      checkout
+                    </button>
+                  </>
+                )
+              }
             </div>
-
-            <button className="mt-5 w-full bg-[#D87D4A] text-white py-2 rounded-md hover:bg-[#b9622e] transition-all">
-              Checkout
-            </button>
-          </>
-        ) : (
-          <p className="text-gray-500 text-center py-6">Your cart is empty 🛒</p>
-        )}
-      </div>
-    </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };

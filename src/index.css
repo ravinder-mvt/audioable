@@ -4,7 +4,7 @@
 
 @layer components {
   .custom-container {
-    @apply mx-auto max-w-5xl;
+    @apply mx-auto p-10 max-w-6xl;
   }
 }
 
@@ -23,6 +23,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input::placeholder{
+  font-weight:500;
+  opacity: 0.5;
+  color: #927158;
+}
+
+.check1 input::placeholder{
+  font-weight:500;
+  opacity: 0.5;
+  color: black;
+}
 @layer components { 
   .centered {
     @apply flex items-center justify-center;

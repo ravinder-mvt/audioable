@@ -3,7 +3,7 @@ import mainImg from "../assets/whitehead/desktop/image-category-page-preview.jpg
 import white1 from "../assets/whitehead/desktop/image-gallery-1.jpg";
 import white2 from "../assets/whitehead/desktop/image-gallery-2.jpg";
 import white3 from "../assets/whitehead/desktop/image-gallery-3.jpg";
-
+import Ear1 from "../assets/boat.jpg";
 // black head
 import mainBlackImg from "../assets/blackhead/desktop/image-category-page-preview-black.jpg";
 import black1 from "../assets/blackhead/desktop/image-gallery-1-black.jpg";
@@ -51,6 +51,7 @@ export const storeData = [
     slug: "xx99-mark-ii-headphones",
     title: "XX99 Mark II ",
     subTitle: "New Product",
+    type: "headphone",
     description:
       "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
     image: mainImg,
@@ -91,6 +92,7 @@ export const storeData = [
     slug: "xx99-mark-i-headphones",
     title: "XX99 Mark I Headphones",
     subTitle: "New Product",
+    type: "headphone",
     description:
       "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike.",
     image: mainBlackImg,
@@ -130,6 +132,7 @@ export const storeData = [
     slug: "xx59-headphones",
     title: "XX59 Headphones",
     subTitle: "New Product",
+    type: "headphone",
     description:
       "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones.",
     image: mainMark2,
@@ -169,6 +172,7 @@ export const storeData = [
     slug: "zx7-speaker",
     title: "ZX7 Speaker",
     subTitle: "New Product",
+    type: "speaker",
     description:
       "Stream high-quality sound with the ZX7 speaker designed for home or studio environments.",
     image: mainZX7,
@@ -203,6 +207,7 @@ export const storeData = [
     slug: "yx-earphones",
     title: "YX Earphones",
     subTitle: "New Product",
+    type: "earphone",
     description:
       "Experience clear, distortion-free audio with ergonomic design for comfortable long listening.",
     image: mainYX,
@@ -237,6 +242,7 @@ export const storeData = [
     slug: "zx9-speaker",
     title: "ZX9 Speaker",
     subTitle: "New Product",
+    type: "speaker",
     description:
       "Upgrade your home sound system with the ZX9 Speaker featuring powerful bass and crisp clarity.",
     image: mainZX9,
@@ -266,5 +272,44 @@ export const storeData = [
       },
     ],
   },
+  {
+    id: 7,
+    slug: "boat-earphones",
+    title: "Boat Earphones",
+    subTitle: "New Product",
+    type: "earphone",
+    description:
+      "Experience the perfect balance of bass and clarity with Boat Earphones. Designed for music lovers who want powerful sound in a sleek, compact design.",
+    image: Ear1,
+    reverse: false,
+    price: "$499",
+    features:
+      "Built for all-day comfort with ergonomic ear tips and tangle-free cables. Equipped with an inline mic and multi-function button for easy calls and playback control.",
+    feat:
+      "Boat Earphones deliver immersive sound with rich bass, crystal-clear highs, and passive noise cancellation for uninterrupted listening wherever you go.",
+    content: [
+      "1x Earphones",
+      "3x Ear tip sizes",
+      "1x Carry pouch",
+      "1x User manual",
+    ],
+    fullImages: [yx_1, yx_2, yx_3],
+    recomended: [
+      {
+        slug: "yx-earphones",
+        title: "YX Earphones",
+        image: mainYX,
+      },
+      {
+        slug: "xx59-headphones",
+        title: "XX59 Headphones",
+        image: goldHead,
+      },
+      {
+        slug: "zx7-speaker",
+        title: "ZX7 Speaker",
+        image: blackspeak1,
+      },
+    ],
+  },
 ];
-
